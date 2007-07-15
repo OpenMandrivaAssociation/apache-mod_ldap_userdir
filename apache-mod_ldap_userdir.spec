@@ -5,13 +5,13 @@
 
 Summary:	Look up user home directories (for /~user URLs) from an LDAP directory
 Name:		apache-%{mod_name}
-Version:	1.1.10
-Release:	%mkrel 3
+Version:	1.1.11
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPL
 URL:		http://horde.net/~jwm/software/mod_ldap_userdir/
 Source0:	http://horde.net/~jwm/software/mod_ldap_userdir/%{mod_name}-%{version}.tar.bz2
-Source1:	%{mod_conf}.bz2
+Source1:	%{mod_conf}
 Patch0:		mod_ldap_userdir-anonbind.diff
 BuildRequires:	openssl-devel
 BuildRequires:	openldap-devel
@@ -29,14 +29,15 @@ Epoch:		1
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-mod_ldap_userdir is a module that enables the Apache web server to
-look up user home directories (for /~user URLs) from an LDAP
-directory.
+mod_ldap_userdir is a module that enables the Apache web server to look up user
+home directories (for /~user URLs) from an LDAP directory.
 
 %prep
 
 %setup -q -n %{mod_name}-%{version}
 %patch0 -p0 -b .anonbind
+
+cp %{SOURCE1} %{mod_conf}
 
 # strip away annoying ^M
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
@@ -59,10 +60,7 @@ install -d %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 
 install -m0755 .libs/*.so %{buildroot}%{_libdir}/apache-extramodules/
-bzcat %{SOURCE1} > %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
-
-install -d %{buildroot}%{_var}/www/html/addon-modules
-ln -s ../../../..%{_docdir}/%{name}-%{version} %{buildroot}%{_var}/www/html/addon-modules/%{name}-%{version}
+install -m0644 %{mod_conf} %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
 
 %post
 if [ -f %{_var}/lock/subsys/httpd ]; then
@@ -84,6 +82,3 @@ fi
 %doc DIRECTIVES README posixAccount-objectclass user-ldif
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
-%{_var}/www/html/addon-modules/*
-
-
