@@ -26,6 +26,7 @@ BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
 Conflicts:	apache-mod_userdir
 Epoch:		1
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_ldap_userdir is a module that enables the Apache web server to look up user
