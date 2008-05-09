@@ -5,14 +5,13 @@
 
 Summary:	Look up user home directories (for /~user URLs) from an LDAP directory
 Name:		apache-%{mod_name}
-Version:	1.1.11
-Release:	%mkrel 4
+Version:	1.1.12
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPL
 URL:		http://horde.net/~jwm/software/mod_ldap_userdir/
-Source0:	http://horde.net/~jwm/software/mod_ldap_userdir/%{mod_name}-%{version}.tar.bz2
+Source0:	http://horde.net/~jwm/software/mod_ldap_userdir/%{mod_name}-%{version}.tar.gz
 Source1:	%{mod_conf}
-Patch0:		mod_ldap_userdir-anonbind.diff
 BuildRequires:	openssl-devel
 BuildRequires:	openldap-devel
 Requires:	openldap
@@ -35,7 +34,6 @@ home directories (for /~user URLs) from an LDAP directory.
 %prep
 
 %setup -q -n %{mod_name}-%{version}
-%patch0 -p0 -b .anonbind
 
 cp %{SOURCE1} %{mod_conf}
 
