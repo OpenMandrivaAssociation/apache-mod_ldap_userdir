@@ -5,8 +5,8 @@
 
 Summary:	Look up user home directories (for /~user URLs) from an LDAP directory
 Name:		apache-%{mod_name}
-Version:	1.1.12
-Release:	%mkrel 3
+Version:	1.1.13
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPL
 URL:		http://horde.net/~jwm/software/mod_ldap_userdir/
@@ -52,7 +52,7 @@ find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 %{_sbindir}/apxs -DTLS=1 -L%{_libdir} -lldap -llber -c mod_ldap_userdir.c
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 install -d %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
@@ -73,7 +73,7 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
