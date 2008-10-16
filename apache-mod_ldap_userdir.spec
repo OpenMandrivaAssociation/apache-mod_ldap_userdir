@@ -5,7 +5,7 @@
 
 Summary:	Look up user home directories (for /~user URLs) from an LDAP directory
 Name:		apache-%{mod_name}
-Version:	1.1.13
+Version:	1.1.14
 Release:	%mkrel 1
 Group:		System/Servers
 License:	GPL
