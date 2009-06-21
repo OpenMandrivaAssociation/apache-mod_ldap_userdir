@@ -77,6 +77,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc DIRECTIVES README posixAccount-objectclass user-ldif
+%doc DIRECTIVES README user-ldif
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
