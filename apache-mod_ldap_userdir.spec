@@ -6,7 +6,7 @@
 Summary:	Look up user home directories (for /~user URLs) from an LDAP directory
 Name:		apache-%{mod_name}
 Version:	1.1.18
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Servers
 License:	GPL
 URL:		http://horde.net/~jwm/software/mod_ldap_userdir/
