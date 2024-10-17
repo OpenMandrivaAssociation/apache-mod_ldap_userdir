@@ -9,7 +9,7 @@ Version:	1.1.18
 Release:	5
 Group:		System/Servers
 License:	GPL
-URL:		http://horde.net/~jwm/software/mod_ldap_userdir/
+URL:		https://horde.net/~jwm/software/mod_ldap_userdir/
 Source0:	http://horde.net/~jwm/software/mod_ldap_userdir/%{mod_name}-%{version}.tar.gz
 Source1:	%{mod_conf}
 BuildRequires:	openssl-devel
