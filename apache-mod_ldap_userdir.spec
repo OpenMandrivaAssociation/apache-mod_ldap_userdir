@@ -12,6 +12,11 @@ License:	GPL
 URL:		https://horde.net/~jwm/software/mod_ldap_userdir/
 Source0:	http://horde.net/~jwm/software/mod_ldap_userdir/%{mod_name}-%{version}.tar.gz
 Source1:	%{mod_conf}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	openssl-devel
 BuildRequires:	openldap-devel
 Requires:	openldap
